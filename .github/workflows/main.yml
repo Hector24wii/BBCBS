@@ -29,7 +29,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Mod
-        uses: geode-sdk/build-geode-mod@main
+        uses: geode-sdk/build-geode-mod@v2
         with:
-          sdk: nightly
           target: ${{ matrix.config.target }}
