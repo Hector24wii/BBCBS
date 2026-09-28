@@ -1,10 +1,10 @@
 {
-  "geode": "*",
+  "geode": "v3.0.0",
   "gd": {
     "win": "*",
     "android": "*"
   },
-  "id": "MACK263.iptnewgroundsbypass",
+  "id": "tuusuario.iptnewgroundsbypass",
   "name": "IPT Newgrounds Bypass",
   "version": "v1.0.0",
   "developer": "TuNombre",
