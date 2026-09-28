@@ -7,10 +7,10 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-setup_geode_mod(IPTNewgroundsBypass)
-
-add_geode_mod(
-    IPTNewgroundsBypass
-    SOURCES
-        src/main.cpp
+# 1. Creamos la librería compartida C++ primero
+add_library(IPTNewgroundsBypass SHARED
+    src/main.cpp
 )
+
+# 2. Enlazamos los componentes del SDK de Geode al target ya existente
+setup_geode_mod(IPTNewgroundsBypass)
