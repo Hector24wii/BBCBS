@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.25)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -7,10 +7,8 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-setup_geode_mod()
-
-add_geode_mod(
-    IPTNewgroundsBypass
-    SOURCES
-        src/main.cpp
+add_library(${PROJECT_NAME} SHARED
+    src/main.cpp
 )
+
+create_geode_file(${PROJECT_NAME})
