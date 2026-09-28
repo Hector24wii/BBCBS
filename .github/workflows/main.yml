@@ -31,4 +31,5 @@ jobs:
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
+          sdk: v2.0.0-beta.1
           target: ${{ matrix.config.target }}
