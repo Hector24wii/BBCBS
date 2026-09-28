@@ -1,0 +1,12 @@
+{
+  "geode": "2.0.0",
+  "gd": {
+    "win": "2.206",
+    "android": "2.206"
+  },
+  "id": "polagest.ipt_newgrounds_bypass",
+  "name": "IPT Newgrounds Bypass",
+  "version": "v1.0.0",
+  "developer": "R.E.J.H_TEAMS",
+  "description": "Redirige la descarga de canciones de Geometry Dash a través del Cloudflare Worker para evadir los bloqueos de la red IPT."
+}
