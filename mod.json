@@ -1,5 +1,5 @@
 {
-  "geode": "2.0.0-beta.1",
+  "geode": "v2.0.0",
   "gd": {
     "win": "*",
     "android": "*"
@@ -7,6 +7,6 @@
   "id": "tuusuario.iptnewgroundsbypass",
   "name": "IPT Newgrounds Bypass",
   "version": "v1.0.0",
-  "developer": "ano",
+  "developer": "TuNombre",
   "description": "Bypass para canciones de Newgrounds en Geometry Dash."
 }
