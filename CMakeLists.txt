@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.13)
 
+# Define el nombre del proyecto
+project(IPTNewgroundsBypass)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
+# Carga el SDK de Geode completo (macros de CMake + librerías C++ y headers)
+find_package(Geode REQUIRED HINTS $ENV{GEODE_SDK})
 
-project(IPTNewgroundsBypass)
-
-# 1. Inicializa el SDK de Geode a nivel global (sin pasar argumentos de target)
-setup_geode_mod()
-
-# 2. Crea el mod y añade el código fuente (agrega automáticamente los headers y enlaces)
-add_geode_mod(
-    IPTNewgroundsBypass
-    SOURCES
-        src/main.cpp
+# Crea la librería con tu código fuente
+add_library(${PROJECT_NAME} SHARED 
+    src/main.cpp
 )
+
+# Configura y empaqueta el mod en formato .geode
+setup_geode_mod(${PROJECT_NAME})
