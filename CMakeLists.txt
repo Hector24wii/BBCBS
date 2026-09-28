@@ -7,10 +7,7 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-setup_geode_mod(
-    NAME IPTNewgroundsBypass
-    BUILD_DIR build
-)
+setup_geode_mod()
 
 add_geode_mod(
     IPTNewgroundsBypass
