@@ -7,8 +7,10 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-setup_geode_mod(IPTNewgroundsBypass)
+# 1. Inicializa el SDK de Geode a nivel global (sin pasar argumentos de target)
+setup_geode_mod()
 
+# 2. Crea el mod y añade el código fuente (agrega automáticamente los headers y enlaces)
 add_geode_mod(
     IPTNewgroundsBypass
     SOURCES
