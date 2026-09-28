@@ -1,7 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MusicDownloadManager.hpp>
 #include <Geode/utils/web.hpp>
-#include <filesystem>
 
 using namespace geode::prelude;
 
@@ -9,30 +8,30 @@ class $modify(MyMusicManager, MusicDownloadManager) {
     void downloadSong(int songID) {
         log::info("Interceptando descarga de cancion ID: {}", songID);
 
-        // 1. URL de tu Cloudflare Worker
         std::string workerUrl = fmt::format(
             "https://newgrounds.polagest.workers.dev/audio/listen/{}", 
             songID
         );
 
-        // 2. Obtener la ruta para guardar la canción (.mp3)
-        std::filesystem::path songPath = Mod::get()->getSaveDir() / fmt::format("{}.mp3", songID);
+        // En Geode, pathForSong o el directorio de recursos se encarga del archivo local
+        auto songPath = this->pathForSong(songID);
 
-        // 3. Petición HTTP usando la API de Geode
-        web::WebRequest req = web::WebRequest();
-        
-        req.get(workerUrl).listen([this, songID, songPath](web::WebResponse* response) {
-            if (response && response->ok()) {
-                auto bytes = response->data();
-                if (file::writeBinary(songPath, bytes)) {
-                    log::info("Cancion {} guardada exitosamente.", songID);
-                    this->onDownloadSongCompleted(songID);
+        // Realizar la peticion HTTP usando el task/listener de Geode
+        web::WebRequest req;
+        req.get(workerUrl).listen(
+            [this, songID, songPath](web::WebResponse* res) {
+                if (res && res->ok()) {
+                    auto data = res->data();
+                    if (file::writeBinary(songPath, data)) {
+                        log::info("Cancion {} instalada.", songID);
+                        this->onDownloadSongCompleted(songID);
+                    } else {
+                        log::error("Error al escribir el archivo.");
+                    }
                 } else {
-                    log::error("No se pudo escribir el archivo MP3.");
+                    log::error("Error en la peticion al Worker.");
                 }
-            } else {
-                log::error("Error al conectar con el Worker para la cancion {}.", songID);
             }
-        });
+        );
     }
 };
