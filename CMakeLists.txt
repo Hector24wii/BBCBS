@@ -7,15 +7,19 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-# 1. Declarar el target de la librería
+# 1. Declarar la librería del mod
 add_library(IPTNewgroundsBypass SHARED
     src/main.cpp
 )
 
-# 2. Apuntar a la carpeta correcta de encabezados del SDK
+# 2. Inyectar todas las rutas de cabeceras de Geode y Cocos2d-x
 target_include_directories(IPTNewgroundsBypass PRIVATE
     "$ENV{GEODE_SDK}/loader/include"
+    "$ENV{GEODE_SDK}/cocos2d/cocos2dx"
+    "$ENV{GEODE_SDK}/cocos2d/cocos2dx/include"
+    "$ENV{GEODE_SDK}/cocos2d/cocos2dx/platform"
+    "$ENV{GEODE_SDK}/cocos2d/extensions"
 )
 
-# 3. Empaquetar y configurar el mod
+# 3. Configuración y empaquetado del mod
 setup_geode_mod(IPTNewgroundsBypass)
