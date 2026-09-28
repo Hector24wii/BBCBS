@@ -7,8 +7,10 @@ include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
 
 project(IPTNewgroundsBypass)
 
-add_library(IPTNewgroundsBypass SHARED
-    src/main.cpp
-)
-
 setup_geode_mod(IPTNewgroundsBypass)
+
+add_geode_mod(
+    IPTNewgroundsBypass
+    SOURCES
+        src/main.cpp
+)
